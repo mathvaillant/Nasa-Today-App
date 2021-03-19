@@ -1,17 +1,19 @@
-import React, { Component, Fragment } from 'react'
-import './App.css'
+import React, { Component } from 'react'
+import './App.scss'
 
 export class App extends Component {
   render() {
     return (
-      <>
-        Nasa Now App
-        {/* START APP */}
-        {/* Nasa apod */}
-        {/* Header */}
-        {/* SearchBar */}
-        {/* Showcase */} {/* ----> showcase/media id */}
-      </>
+      <div className='app'>
+        <div className='app__background'>
+          Nasa Now App
+          {/* START APP */}
+          {/* Nasa apod */}
+          {/* Header */}
+          {/* SearchBar */}
+          {/* Showcase */} {/* ----> showcase/media id */}
+        </div>
+      </div>
     )
   }
 }
