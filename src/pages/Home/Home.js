@@ -12,7 +12,7 @@ export class Home extends Component {
     this.setState({ loading: true })
 
     const res = await fetch(
-      'https://images-api.nasa.gov/search?q=space&media_type=image'
+      'https://images-api.nasa.gov/search?q=earth&media_type=image'
     )
     const resData = await res.json()
     const data = resData.collection.items

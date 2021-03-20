@@ -15,19 +15,21 @@ export class ShowcaseItems extends Component {
   render() {
     const { loading, data } = this.state
     return (
-      <div className='showcase'>
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : (
-          data.map((item) => (
-            <Item
-              className='showcase__item'
-              data={item.data[0]}
-              href={item.href}
-              links={item.links[0]}
-            />
-          ))
-        )}
+      <div className='showcase container'>
+        <div className='row'>
+          {loading ? (
+            <h1>Loading...</h1>
+          ) : (
+            data.map((item) => (
+              <Item
+                className='showcase__item'
+                data={item.data[0]}
+                href={item.href}
+                links={item.links[0]}
+              />
+            ))
+          )}
+        </div>
       </div>
     )
   }

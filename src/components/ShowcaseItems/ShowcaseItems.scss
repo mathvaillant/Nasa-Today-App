@@ -1,7 +1,6 @@
 .showcase {
   margin-top: 3rem;
-  display: grid;
-  .showcase__item {
-    /* max-width: 300px; */
-  }
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
