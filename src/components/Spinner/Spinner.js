@@ -6,7 +6,7 @@ export class Spinner extends Component {
     return (
       <div
         className='spinner'
-        style={{ marginTop: '30%', marginRight: 'auto' }}></div>
+        style={{ marginTop: '20vh', marginRight: 'auto' }}></div>
     )
   }
 }
