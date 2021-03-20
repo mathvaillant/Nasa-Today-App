@@ -6,9 +6,6 @@ import Logo from '../../assets/svg/logo.svg'
 import Arrow from '../../assets/svg/arrow.svg'
 /* import PropTypes from 'prop-types' */
 
-const apodUrl =
-  'https://api.nasa.gov/planetary/apod?api_key=bLYqZVI9VvvgoF0zW1O9hXEwC0vo4MhE2cvQCscu'
-
 class Apod extends Component {
   state = {
     data: {},
@@ -18,7 +15,9 @@ class Apod extends Component {
   async componentDidMount() {
     this.setState({ loading: true })
 
-    const res = await fetch(apodUrl)
+    const res = await fetch(
+      `https://api.nasa.gov/planetary/apod?api_key=bLYqZVI9VvvgoF0zW1O9hXEwC0vo4MhE2cvQCscu`
+    )
     const data = await res.json()
     this.setState({ data: data, loading: false })
   }

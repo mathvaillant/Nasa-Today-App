@@ -1,0 +1,28 @@
+@import '../../utilities/variables';
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form {
+    margin-top: 2.4rem;
+    input {
+      min-width: 230px;
+      background: transparent;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-color: $white;
+      border-width: 1px;
+      outline: none;
+    }
+    button {
+      position: absolute;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      img {
+        width: 50%;
+      }
+    }
+  }
+}
