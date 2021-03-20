@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../../components/Header/Header'
 import Search from '../../components/Search/Search'
+import Spinner from '../../components/Spinner/Spinner'
 import ShowcaseItems from '../../components/ShowcaseItems/ShowcaseItems'
 export class Home extends Component {
   state = {
@@ -25,7 +26,7 @@ export class Home extends Component {
       <>
         <Header />
         <Search />
-        {loading ? <h1>Loading...</h1> : <ShowcaseItems data={data} />}
+        {loading ? <Spinner /> : <ShowcaseItems data={data} />}
       </>
     )
   }

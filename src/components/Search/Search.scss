@@ -1,6 +1,7 @@
 @import '../../utilities/variables';
 .search {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   form {
@@ -23,6 +24,28 @@
       img {
         width: 50%;
       }
+    }
+  }
+  .search__date {
+    margin-top: 2rem;
+    display: flex;
+    label {
+      display: flex;
+      align-items: center;
+      font-family: $default;
+      font-size: 12px;
+      margin-right: 3px;
+    }
+    input {
+      text-align: center;
+      border-radius: 1px;
+      width: 144px;
+      height: 22px;
+      color: $grey;
+      background-color: rgba(255, 255, 255, 0.733);
+      border: none;
+      outline: none;
+      margin-right: 1rem;
     }
   }
 }
