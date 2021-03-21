@@ -44,7 +44,7 @@ export class Search extends Component {
           </button>
         </form>
 
-        <div className='search__date d-lg-flex   '>
+        <div className='search__date d-none d-lg-flex   '>
           <label htmlFor='from'>From:</label>
           <input
             onChange={this.onChangeDate}

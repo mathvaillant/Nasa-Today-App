@@ -3,10 +3,12 @@ import Header from '../../components/Header/Header'
 import Search from '../../components/Search/Search'
 import Spinner from '../../components/Spinner/Spinner'
 import ShowcaseItems from '../../components/ShowcaseItems/ShowcaseItems'
+import NotFound from '../../components/NotFound/NotFound'
 export class Home extends Component {
   state = {
     data: {},
     loading: false,
+    notFound: false,
   }
 
   // Search for the results from the input
@@ -17,9 +19,10 @@ export class Home extends Component {
     console.log(url)
     const res = await fetch(url)
     const resData = await res.json()
-    console.log(resData)
     const data = resData.collection.items
-    this.setState({ data: data, loading: false })
+    data.length !== 0
+      ? this.setState({ data: data, loading: false, notFound: false })
+      : this.setState({ data: data, notFound: true, loading: false })
   }
 
   // When Dom loads for the first time
@@ -27,7 +30,7 @@ export class Home extends Component {
     this.setState({ loading: true })
 
     const res = await fetch(
-      'https://images-api.nasa.gov/search?q=&media_type=image'
+      'https://images-api.nasa.gov/search?q= &media_type=image'
     )
     const resData = await res.json()
     const data = resData.collection.items
@@ -35,12 +38,18 @@ export class Home extends Component {
   }
 
   render() {
-    const { loading, data } = this.state
+    const { loading, data, notFound } = this.state
     return (
       <>
         <Header />
         <Search searchResults={this.searchResults} />
-        {loading ? <Spinner /> : <ShowcaseItems data={data} />}
+        {loading ? (
+          <Spinner />
+        ) : notFound ? (
+          <NotFound />
+        ) : (
+          <ShowcaseItems data={data} />
+        )}
       </>
     )
   }
