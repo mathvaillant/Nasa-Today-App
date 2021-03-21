@@ -8,8 +8,8 @@ export class Search extends Component {
     super(props)
     this.state = {
       text: '',
-      from: '',
-      to: '',
+      from: '2000',
+      to: '2021',
     }
   }
 
@@ -25,40 +25,46 @@ export class Search extends Component {
   }
 
   searchInput = (e) => {
-    console.log('Searching for...' + this.state.text)
+    this.props.searchResults(this.state)
     e.preventDefault()
   }
 
   render() {
-    console.log(this.state)
     return (
       <div className='search'>
         <form>
-          <input type='text' id='search__text' onChange={this.onChangeText} />
+          <input
+            name='input'
+            type='text'
+            id='search__text'
+            onChange={this.onChangeText}
+          />
           <button onClick={this.searchInput}>
             <img src={Icon} alt='icon.png' />
           </button>
         </form>
 
-        <div className='search__date d-none d-lg-flex   '>
+        <div className='search__date d-lg-flex   '>
           <label htmlFor='from'>From:</label>
           <input
             onChange={this.onChangeDate}
-            type='date'
+            step='1'
+            type='number'
             id='from'
             name='from'
             value={this.state.from}
-            min='2000-01-01'
-            max=''></input>
+            min='1900'
+            max='2099'></input>
           <label htmlFor='to'>To:</label>
           <input
             onChange={this.onChangeDate}
-            type='date'
+            step='1'
+            type='number'
             id='to'
             name='to'
             value={this.state.to}
-            min='2000-01-01'
-            max=''></input>
+            min='1900'
+            max='2099'></input>
         </div>
       </div>
     )
