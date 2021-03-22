@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../../assets/svg/logo.svg'
 import Arrow from '../../assets/svg/arrow.svg'
+import Spinner from '../../components/Spinner/Spinner'
+import Header from '../../components/Header/Header'
+import './Apod.scss'
 /* import PropTypes from 'prop-types' */
 
 class Apod extends Component {
@@ -37,25 +40,28 @@ class Apod extends Component {
 
     return (
       <div className='apod'>
+        <Header />
         {this.state.loading ? (
           <>
-            <h1>Loading...</h1>
+            <Spinner />
           </>
         ) : (
           <>
-            <img src={Logo} alt='nasa logo.svg' />
-            <h1>Nasa Now</h1>
-            <div className='apod__container'>
-              <div className='apod__container__title'>
-                <h1>{title}</h1>
-                <span>{date}</span>
+            <div className='apod__container container'>
+              <Link className='apod__keep' to='/'>
+                Keep Exploring the App <img src={Arrow} alt='arrow.svg' />
+              </Link>
+              <div className='row'>
+                <div className='apod__container__title'>
+                  <h1>{title}</h1>
+                  <span className='apod__date'>{date}</span>
+                </div>
+                <div className='apod__container__desc'>
+                  <img className='img-fluid' src={hdurl} alt={`${title}.png`} />
+                  <p>{explanation}</p>
+                </div>
               </div>
-              <img src={hdurl} alt={`${title}.png`} />
-              <p>{explanation}</p>
             </div>
-            <Link to='/'>
-              Keep Exploring the App <img src={Arrow} alt='arrow.svg' />
-            </Link>
           </>
         )}
       </div>

@@ -5,7 +5,6 @@ import Header from '../../components/Header/Header'
 import { Link } from 'react-router-dom'
 import Icon from '../../assets/svg/icon.svg'
 import Arrow from '../../assets/svg/arrow.svg'
-import NotFound from '../../components/NotFound/NotFound'
 
 export class ItemPage extends Component {
   state = {

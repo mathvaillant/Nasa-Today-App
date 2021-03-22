@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Logo from '../../assets/svg/logo.svg'
+import Arrow from '../../assets/svg/arrow.svg'
+import Header from '../../components/Header/Header'
 import './Start.scss'
 
 export class Start extends Component {
   render() {
     return (
       <div className='start'>
-        <img src={Logo} alt='Nasa Logo.svg' />
-        <h1>Nasa Now</h1>
-        <Link to='/apod'>Start</Link>
+        <Header />
+        <Link className='start__btn' to='/apod'>
+          Start <img src={Arrow} alt='arrow.svg' />
+        </Link>
       </div>
     )
   }

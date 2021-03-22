@@ -20,12 +20,12 @@ export class App extends Component {
       <Router>
         <div className='app'>
           <Switch>
-            {/* <Route exact path='/start'>
+            <Route exact path='/start'>
               <Start />
             </Route>
             <Route exact path='/apod'>
               <Apod />
-            </Route> */}
+            </Route>
             <Route exact path='/' component={Home} />
             <Route exact path='/:id' component={ItemPage} />
           </Switch>
