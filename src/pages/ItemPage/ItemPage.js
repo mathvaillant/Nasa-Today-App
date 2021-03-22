@@ -36,12 +36,16 @@ export class ItemPage extends Component {
             <>
               <Header />
               <div className='container'>
+                <Link className='back' to='/'>
+                  <img src={Arrow} alt='arrow.svg' />
+                  Back
+                </Link>
                 <div className='row'>
                   <h1>
                     {title} <span>{date_created}</span>{' '}
                   </h1>
-                  <img className='itemPage__image' src={href} alt={`${href}`} />
-                  <div className='itemPage__content'>
+
+                  <div className='itemPage__content d-flex flex-column flex-lg-row'>
                     <a className='download' href={`${href}`} download>
                       Download{' '}
                       <img
@@ -51,11 +55,12 @@ export class ItemPage extends Component {
                         alt='icon.svg'
                       />
                     </a>
-                    <p>{description}</p>
-                    <Link className='back' to='/'>
-                      <img src={Arrow} alt='arrow.svg' />
-                      Back
-                    </Link>
+                    <div className='itemPage__content__image mx-0 mx-lg-1'>
+                      <img className='img-fluid' src={href} alt={`${href}`} />
+                    </div>
+                    <div className='itemPage__content__text'>
+                      <p className='p-4 m-0'>{description}</p>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -52,13 +52,21 @@ class Apod extends Component {
                 Keep Exploring the App <img src={Arrow} alt='arrow.svg' />
               </Link>
               <div className='row'>
-                <div className='apod__container__title'>
+                <div className='apod__row__title'>
                   <h1>{title}</h1>
                   <span className='apod__date'>{date}</span>
                 </div>
-                <div className='apod__container__desc'>
-                  <img className='img-fluid' src={hdurl} alt={`${title}.png`} />
-                  <p>{explanation}</p>
+                <div className='apod__row__desc d-flex flex-column flex-lg-row'>
+                  <div className='apod__img mx-0 mx-lg-1'>
+                    <img
+                      className='img-fluid'
+                      src={hdurl}
+                      alt={`${title}.png`}
+                    />
+                  </div>
+                  <div className='apod__paragraph'>
+                    <p className='p-4 m-0'>{explanation}</p>
+                  </div>
                 </div>
               </div>
             </div>

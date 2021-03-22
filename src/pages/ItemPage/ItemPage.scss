@@ -1,59 +1,77 @@
 @import '../../utilities/variables';
 
+.download,
+.back,
+p {
+  color: $white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+
 .itemPage {
   height: 100%;
   font-family: $default;
   .container {
-    margin-top: 2rem;
-    .row {
+    padding: 1rem;
+    .back {
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      max-width: 150px;
+      height: 50px;
+      text-align: center;
+      background: $red;
+      margin-bottom: 2rem;
+      padding-right: 10px;
+      img {
+        transform: rotate(90deg);
+        margin-right: auto;
+        margin-left: 8px;
+      }
+    }
+    .row {
+      .download {
+        z-index: 1;
+        background-color: $blue;
+        border-radius: 2px;
+        padding: 0.2rem 0.6rem;
+        position: absolute;
+        margin-top: -0.4rem;
+        max-width: fit-content;
+        text-align: center;
+        background: $blue;
+      }
       h1 {
         font-size: 1rem;
-      }
-      .img-fluid {
-        width: auto;
-        height: auto;
-        object-fit: cover;
+        margin-bottom: 1rem;
       }
       .itemPage__content {
-        display: flex;
-        flex-direction: column;
-        .download,
-        .back,
-        p {
-          color: $white;
-          text-decoration: none;
-          font-size: 14px;
-          font-weight: 400;
-          margin-top: 1rem;
-        }
-        .download {
-          padding: 0.2rem 0.6rem;
-          max-width: fit-content;
-          text-align: center;
-          background: $blue;
-        }
-        p {
-          font-weight: 300;
-          background-color: $grey;
-          padding: 1rem;
-          overflow: hidden;
-        }
-        .back {
+        .itemPage__content__image {
           display: flex;
-          align-items: center;
-          justify-content: flex-end;
-          max-width: 150px;
-          height: 50px;
-          text-align: center;
-          background: $red;
-          margin-bottom: 4rem;
-          padding-right: 10px;
-          img {
-            transform: rotate(90deg);
-            margin-right: auto;
-            margin-left: 8px;
+          align-items: flex-start;
+          justify-content: center;
+          .img-fluid {
+            max-height: 670px;
+            border: solid 5px $grey;
+            object-fit: contain;
+            padding: 0;
+          }
+        }
+        .itemPage__content__text {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          flex: 1;
+
+          p {
+            font-weight: 300;
+            background-color: $grey;
+            padding: 1rem;
+            line-height: 1.4rem;
+            text-align: justify;
+            overflow: auto;
           }
         }
       }
