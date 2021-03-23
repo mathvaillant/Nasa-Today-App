@@ -9,6 +9,7 @@ export class Home extends Component {
     data: {},
     loading: false,
     notFound: false,
+    lastSearch: '',
   }
 
   // Search for the results from the input
@@ -16,21 +17,29 @@ export class Home extends Component {
     this.setState({ loading: true })
 
     const url = `https://images-api.nasa.gov/search?q=${inputData.text}&media_type=image&year_start=${inputData.from}&year_end=${inputData.to}`
-    console.log(url)
     const res = await fetch(url)
     const resData = await res.json()
     const data = resData.collection.items
     data.length !== 0
-      ? this.setState({ data: data, loading: false, notFound: false })
-      : this.setState({ data: data, notFound: true, loading: false })
+      ? this.setState({
+          data: data,
+          loading: false,
+          notFound: false,
+          lastSearch: inputData.text,
+        })
+      : this.setState({
+          data: data,
+          notFound: true,
+          loading: false,
+          lastSearch: inputData.text,
+        })
   }
 
-  // When Dom loads for the first time
   async componentDidMount() {
     this.setState({ loading: true })
 
     const res = await fetch(
-      'https://images-api.nasa.gov/search?q= &media_type=image'
+      `https://images-api.nasa.gov/search?q=&media_type=image`
     )
     const resData = await res.json()
     const data = resData.collection.items
@@ -42,7 +51,10 @@ export class Home extends Component {
     return (
       <>
         <Header />
-        <Search searchResults={this.searchResults} />
+        <Search
+          lastSearch={this.state.lastSearch}
+          searchResults={this.searchResults}
+        />
         {loading ? (
           <Spinner />
         ) : notFound ? (

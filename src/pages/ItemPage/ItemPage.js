@@ -14,15 +14,17 @@ export class ItemPage extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      data: this.props.location.state.data,
-      href: this.props.location.state.href,
-      loading: false,
-    })
+    setTimeout(() => {
+      this.setState({
+        data: this.props.location.state.data,
+        href: this.props.location.state.href,
+        loading: false,
+      })
+    }, 200)
   }
 
   render() {
-    const { data, loading, href, notFound } = this.state
+    const { data, loading, href } = this.state
     const { title, description, date_created } = data
     return (
       <>

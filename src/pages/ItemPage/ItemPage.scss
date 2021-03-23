@@ -25,6 +25,10 @@ p {
       background: $red;
       margin-bottom: 2rem;
       padding-right: 10px;
+      &:hover {
+        color: $white;
+        text-decoration: underline;
+      }
       img {
         transform: rotate(90deg);
         margin-right: auto;
@@ -42,6 +46,10 @@ p {
         max-width: fit-content;
         text-align: center;
         background: $blue;
+        &:hover {
+          color: $white;
+          text-decoration: underline;
+        }
       }
       h1 {
         font-size: 1rem;
