@@ -62,7 +62,7 @@ p,
         }
         .apod__paragraph {
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           justify-content: center;
           flex: 1;
           p {

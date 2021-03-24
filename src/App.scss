@@ -13,13 +13,32 @@ body {
   color: white;
 }
 
-body {
+/* body {
   background: url('./assets/images/background.jpg') no-repeat center center
     fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  overflow: hidden;
+} */
+
+.app__bg {
+  position: fixed;
+  z-index: -1000;
+  height: 100%;
+  animation: zoominoutsinglefeatured 80s infinite;
+  width: 100%;
+  background: url('./assets/images/background.jpg') no-repeat center center
+    fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+  .app {
+    z-index: 1000;
+  }
 }
 
 @keyframes zoominoutsinglefeatured {
@@ -33,8 +52,3 @@ body {
     transform: scale(1, 1);
   }
 }
-
-/* height: 100vh;
-  animation: zoominoutsinglefeatured 100s infinite;
-  width: 100%;
-  height: 100%; */

@@ -13,11 +13,13 @@ import ItemPage from './pages/ItemPage/ItemPage'
 import Start from './pages/Start/Start'
 import Apod from './pages/Apod/Apod'
 import Home from './pages/Home/Home'
+import bgImg from './assets/images/background.jpg'
 
 export class App extends Component {
   render() {
     return (
       <Router>
+        <div className='app__bg'></div>
         <div className='app'>
           <Switch>
             <Route exact path='/start' component={Start} />
