@@ -4,4 +4,4 @@
 
 ## Nasa Today App
 
-![Alt text](src/assets/images/background.jpg?raw=true 'Title')
+![Alt text](src/assets/images/app.png?raw=true 'Title')
