@@ -16,11 +16,23 @@ import Home from './pages/Home/Home'
 import bgImg from './assets/images/background.jpg'
 
 export class App extends Component {
+  state = {
+    appStarted: false,
+  }
   render() {
+    const { appStarted } = this.state
     return (
       <Router>
         <div className='app__bg'></div>
         <div className='app'>
+          {!appStarted ? (
+            <>
+              <Redirect to='/start' />
+              <Route exact path='/start' component={Start} />
+            </>
+          ) : (
+            ''
+          )}
           <Switch>
             <Route exact path='/start' component={Start} />
             <Route exact path='/apod' component={Apod} />
