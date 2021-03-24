@@ -10,7 +10,7 @@ import './Apod.scss'
 
 const Apod = () => {
   const [data, setData] = useState({})
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setLoading(true)

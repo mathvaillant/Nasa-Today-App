@@ -21,9 +21,9 @@ const Home = () => {
     const data = resData.collection.items
     if (data.length !== 0) {
       setData(data)
-      setLoading(false)
       setResultsFound(data.length)
       setNotFound(false)
+      setLoading(false)
     } else {
       setNotFound(true)
       setLoading(false)

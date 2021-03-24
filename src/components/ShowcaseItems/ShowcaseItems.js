@@ -5,8 +5,6 @@ import './ShowcaseItems.scss'
 
 const ShowcaseItems = ({ data, resultsFound }) => {
   const [loading, setLoading] = useState(true)
-  const [newData] = useState(data)
-  const [newResultsFound] = useState(resultsFound)
 
   useEffect(() => {
     setLoading(false)
@@ -16,12 +14,12 @@ const ShowcaseItems = ({ data, resultsFound }) => {
     <div className='showcase container'>
       <div className='row'>
         <small style={{ fontSize: '0.75rem', fontStyle: 'italic' }}>
-          Results found: {newResultsFound}
+          Results found: {resultsFound}
         </small>
         {loading ? (
           <Loading />
         ) : (
-          newData.map((item) => (
+          data.map((item) => (
             <Item
               className='showcase__item'
               data={item.data[0]}
