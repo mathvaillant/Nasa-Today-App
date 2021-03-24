@@ -9,7 +9,7 @@ const Start = () => {
     <div className='start'>
       <Header />
       <Link className='start__btn' to='/apod'>
-        Start <img src={Arrow} alt='arrow.svg' />
+        🚀 Start <img src={Arrow} alt='arrow.svg' />
       </Link>
     </div>
   )

@@ -43,6 +43,10 @@ const Apod = () => {
             </Link>
             <div className='row'>
               <div className='apod__row__title'>
+                <h2>
+                  Welcome back, Martian! <span>🖖👽🛸</span> Here's today's new
+                  APOD interesting fact{' '}
+                </h2>
                 <h1>{title}</h1>
                 <span className='apod__date'>{date}</span>
               </div>

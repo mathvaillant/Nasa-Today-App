@@ -11,7 +11,7 @@
     max-width: fit-content;
     text-decoration: none;
     color: $white;
-    padding: 0.6rem 2.4rem;
+    padding: 0.6rem 2.4rem 0.8rem 2.6rem;
     text-align: center;
     background: $blue;
     font-size: 2rem;
@@ -20,6 +20,7 @@
     img {
       transform: rotate(-90deg);
       margin-left: 1rem;
+      margin-bottom: 3px;
     }
   }
 }
