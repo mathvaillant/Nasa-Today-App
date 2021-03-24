@@ -9,7 +9,7 @@ export class Home extends Component {
     data: {},
     loading: false,
     notFound: false,
-    lastSearch: '',
+    resultsFound: 0,
   }
 
   // Search for the results from the input
@@ -24,14 +24,13 @@ export class Home extends Component {
       ? this.setState({
           data: data,
           loading: false,
+          resultsFound: data.length,
           notFound: false,
-          lastSearch: inputData.text,
         })
       : this.setState({
           data: data,
           notFound: true,
           loading: false,
-          lastSearch: inputData.text,
         })
   }
 
@@ -43,16 +42,16 @@ export class Home extends Component {
     )
     const resData = await res.json()
     const data = resData.collection.items
-    this.setState({ data: data, loading: false })
+    this.setState({ data: data, loading: false, resultsFound: data.length })
   }
 
   render() {
-    const { loading, data, notFound } = this.state
+    const { loading, data, notFound, resultsFound } = this.state
     return (
       <>
         <Header />
         <Search
-          lastSearch={this.state.lastSearch}
+          resultsFound={resultsFound}
           searchResults={this.searchResults}
         />
         {loading ? (
@@ -60,7 +59,9 @@ export class Home extends Component {
         ) : notFound ? (
           <NotFound />
         ) : (
-          <ShowcaseItems data={data} />
+          <>
+            <ShowcaseItems resultsFound={resultsFound} data={data} />
+          </>
         )}
       </>
     )

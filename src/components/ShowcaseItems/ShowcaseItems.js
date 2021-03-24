@@ -17,6 +17,9 @@ export class ShowcaseItems extends Component {
     return (
       <div className='showcase container'>
         <div className='row'>
+          <small style={{ fontSize: '0.75rem', fontStyle: 'italic' }}>
+            Results found: {this.props.resultsFound}
+          </small>
           {loading ? (
             <h1>Loading...</h1>
           ) : (

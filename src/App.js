@@ -20,12 +20,8 @@ export class App extends Component {
       <Router>
         <div className='app'>
           <Switch>
-            <Route exact path='/start'>
-              <Start />
-            </Route>
-            <Route exact path='/apod'>
-              <Apod />
-            </Route>
+            <Route exact path='/start' component={Start} />
+            <Route exact path='/apod' component={Apod} />
             <Route exact path='/' component={Home} />
             <Route exact path='/:id' component={ItemPage} />
           </Switch>

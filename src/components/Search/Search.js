@@ -7,7 +7,6 @@ export class Search extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      lastSearch: this.props.lastSearch,
       text: '',
       from: '2000',
       to: '2021',
