@@ -1,3 +1,7 @@
 export const GET_DATA = 'GET_DATA'
 export const GET_APOD = 'GET_APOD'
+export const NOT_FOUND = 'NOT_FOUND'
+export const APP_STARTED = ' APP_STARTED'
 export const SET_LOADING = 'SET_LOADING'
+export const SEARCH_RESULTS = 'SEARCH_RESULTS'
+export const SET_LAST_Y_POSITION = 'SET_LAST_Y_POSITION'

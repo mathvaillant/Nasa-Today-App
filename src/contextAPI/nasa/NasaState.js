@@ -2,7 +2,15 @@ import React, { useReducer } from 'react'
 import NasaContext from './nasaContext'
 import NasaReducer from './NasaReducer'
 
-import { GET_DATA, GET_APOD, SET_LOADING } from '../types'
+import {
+  GET_DATA,
+  GET_APOD,
+  SET_LOADING,
+  NOT_FOUND,
+  APP_STARTED,
+  SEARCH_RESULTS,
+  SET_LAST_Y_POSITION,
+} from '../types'
 
 const NasaState = (props) => {
   const initialState = {
@@ -17,10 +25,9 @@ const NasaState = (props) => {
 
   const [state, dispatch] = useReducer(NasaReducer, initialState)
 
-  // Get Data
-
   // Get ApodData
   const getApodData = async () => {
+    setLoading()
     const res = await fetch(
       'https://api.nasa.gov/planetary/apod?api_key=bLYqZVI9VvvgoF0zW1O9hXEwC0vo4MhE2cvQCscu'
     )
@@ -32,10 +39,54 @@ const NasaState = (props) => {
     })
   }
 
+  // Get Data
+  const getNasaData = async (url) => {
+    setLoading()
+
+    const res = await fetch(url)
+    const resData = await res.json()
+    const data = resData.collection.items
+
+    dispatch({
+      type: GET_DATA,
+      payload: { data: data, resultsFound: data.length },
+    })
+  }
+
+  // Search Results
+  const searchResults = async (inputData) => {
+    setLoading()
+
+    const url = `https://images-api.nasa.gov/search?q=${inputData.text}&media_type=image&year_start=${inputData.from}&year_end=${inputData.to}`
+    const res = await fetch(url)
+    const resData = await res.json()
+    const data = resData.collection.items
+    if (data.length !== 0) {
+      dispatch({
+        type: SEARCH_RESULTS,
+        payload: {
+          data: data,
+          resultsFound: data.length,
+          lastSearch: inputData.text,
+        },
+      })
+    } else {
+      dispatch({
+        type: NOT_FOUND,
+        payload: { lastSearch: inputData.text, notFound: true },
+      })
+    }
+  }
+
   // Get Last search
   // Set LastYposition
+  const setLastYPosition = (number) =>
+    dispatch({ type: SET_LAST_Y_POSITION, payload: { lastYPosition: number } })
+
   // Set App started
+  const setAppStarted = () => dispatch({ type: APP_STARTED })
   // Set not Found
+  const setNotFound = () => dispatch({ type: NOT_FOUND })
   // Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING })
 
@@ -51,6 +102,11 @@ const NasaState = (props) => {
         appStarted: state.appStarted,
         getApodData,
         setLoading,
+        getNasaData,
+        setNotFound,
+        setAppStarted,
+        searchResults,
+        setLastYPosition,
       }}>
       {props.children}
     </NasaContext.Provider>

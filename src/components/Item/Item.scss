@@ -5,11 +5,11 @@
   height: auto;
   margin-bottom: 0.4rem;
   .img-fluid {
+    max-height: 400px;
+    min-height: 100%;
     width: 100%;
-    height: 100%;
     object-fit: cover;
     border: 1px solid $grey;
-    box-shadow: $dropShadow;
     transition: ease-in-out 1s;
     &:hover {
       transform: scale(1.3);
@@ -27,5 +27,8 @@
 @media screen and (min-width: 992px) {
   .item {
     width: 25%;
+    .img-fluid {
+      max-height: 550px;
+    }
   }
 }

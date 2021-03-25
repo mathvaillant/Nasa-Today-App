@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {
   BrowserRouter as Router,
   Route,
@@ -11,9 +11,12 @@ import ItemPage from './pages/ItemPage/ItemPage'
 import Start from './pages/Start/Start'
 import Apod from './pages/Apod/Apod'
 import Home from './pages/Home/Home'
+import NasaContext from './contextAPI/nasa/nasaContext'
 
 const App = () => {
-  const [appStarted, setAppStarted] = useState(false)
+  const nasaContext = useContext(NasaContext)
+
+  const { appStarted } = nasaContext
 
   return (
     <Router>
@@ -22,7 +25,6 @@ const App = () => {
         {!appStarted ? (
           <>
             <Redirect to='/start' />
-            <Route exact path='/start' component={Start} />
           </>
         ) : (
           ''

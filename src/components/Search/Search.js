@@ -1,9 +1,14 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Icon from '../../assets/images/search.png'
+import NasaContext from '../../contextAPI/nasa/nasaContext'
 
 import './Search.scss'
 
-const Search = (props) => {
+const Search = () => {
+  const nasaContext = useContext(NasaContext)
+
+  const { lastSearch, searchResults } = nasaContext
+
   const [text, setText] = useState('')
   const [from, setFrom] = useState('1999')
   const [to, setTo] = useState('2021')
@@ -14,14 +19,18 @@ const Search = (props) => {
     e.preventDefault()
   }
 
-  const onChangeDate = (e) => {
+  const onChangeFrom = (e) => {
     setFrom(e.target.value)
+    e.preventDefault()
+  }
+
+  const onChangeTo = (e) => {
     setTo(e.target.value)
     e.preventDefault()
   }
 
   const searchInput = (e) => {
-    props.searchResults({ text, from, to })
+    searchResults({ text, from, to })
     e.preventDefault()
   }
 
@@ -29,6 +38,7 @@ const Search = (props) => {
     <div className='search'>
       <form>
         <input
+          defaultValue={lastSearch}
           name='input'
           type='text'
           id='search__text'
@@ -42,7 +52,7 @@ const Search = (props) => {
       <div className='search__date d-none d-lg-flex   '>
         <label htmlFor='from'>From:</label>
         <input
-          onChange={onChangeDate}
+          onChange={onChangeFrom}
           step='1'
           type='number'
           id='from'
@@ -52,7 +62,7 @@ const Search = (props) => {
           max='2099'></input>
         <label htmlFor='to'>To:</label>
         <input
-          onChange={onChangeDate}
+          onChange={onChangeTo}
           step='1'
           type='number'
           id='to'
