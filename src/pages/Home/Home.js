@@ -10,6 +10,7 @@ const Home = () => {
   const [loading, setLoading] = useState(false)
   const [notFound, setNotFound] = useState(false)
   const [resultsFound, setResultsFound] = useState(0)
+  const [lastSearch, setLastSearch] = useState('')
 
   // Search for the results from the input
   const searchResults = async (inputData) => {
@@ -23,8 +24,10 @@ const Home = () => {
       setData(data)
       setResultsFound(data.length)
       setNotFound(false)
+      setLastSearch(inputData.text)
       setLoading(false)
     } else {
+      setLastSearch(inputData.text)
       setNotFound(true)
       setLoading(false)
     }

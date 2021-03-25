@@ -2,10 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
+import NasaState from './contextAPI/nasa/NasaState'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NasaState>
+      <App />
+    </NasaState>
   </React.StrictMode>,
   document.getElementById('root')
 )

@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react'
+import React, { useState } from 'react'
 import Icon from '../../assets/images/search.png'
 
 import './Search.scss'

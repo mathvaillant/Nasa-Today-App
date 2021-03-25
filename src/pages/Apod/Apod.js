@@ -1,29 +1,19 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable no-undef */
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Arrow from '../../assets/svg/arrow.svg'
 import Spinner from '../../components/Spinner/Spinner'
 import Header from '../../components/Header/Header'
+import NasaContext from '../../contextAPI/nasa/nasaContext'
 import './Apod.scss'
-/* import PropTypes from 'prop-types' */
 
 const Apod = () => {
-  const [data, setData] = useState({})
-  const [loading, setLoading] = useState(true)
+  const nasaContext = useContext(NasaContext)
+
+  const { data, loading, getApodData } = nasaContext
 
   useEffect(() => {
-    setLoading(true)
-    const fetchData = async () => {
-      const res = await fetch(
-        `https://api.nasa.gov/planetary/apod?api_key=bLYqZVI9VvvgoF0zW1O9hXEwC0vo4MhE2cvQCscu`
-      )
-      const data = await res.json()
-      setData(data)
-      setLoading(false)
-    }
-
-    fetchData()
+    getApodData()
+    // eslint-disable-next-line
   }, [])
 
   const { title, date, explanation, hdurl } = data
