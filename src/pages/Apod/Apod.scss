@@ -51,7 +51,7 @@ p,
         }
       }
       .apod__date {
-        z-index: 1;
+        z-index: 100;
         background-color: $blue;
         padding: 5px;
         position: absolute;
@@ -62,7 +62,7 @@ p,
         font-size: 2rem;
       }
       .apod__row__desc {
-        z-index: -1;
+        z-index: 10;
         .apod__img {
           display: flex;
           align-items: flex-start;
