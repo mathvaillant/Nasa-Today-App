@@ -61,6 +61,7 @@ const NasaState = (props) => {
     const res = await fetch(url)
     const resData = await res.json()
     const data = resData.collection.items
+    console.log(data.length)
     if (data.length !== 0) {
       dispatch({
         type: SEARCH_RESULTS,
@@ -71,14 +72,10 @@ const NasaState = (props) => {
         },
       })
     } else {
-      dispatch({
-        type: NOT_FOUND,
-        payload: { lastSearch: inputData.text, notFound: true },
-      })
+      setNotFound()
     }
   }
 
-  // Get Last search
   // Set LastYposition
   const setLastYPosition = (number) =>
     dispatch({ type: SET_LAST_Y_POSITION, payload: { lastYPosition: number } })
@@ -103,10 +100,10 @@ const NasaState = (props) => {
         getApodData,
         setLoading,
         getNasaData,
-        setNotFound,
         setAppStarted,
         searchResults,
         setLastYPosition,
+        setNotFound,
       }}>
       {props.children}
     </NasaContext.Provider>

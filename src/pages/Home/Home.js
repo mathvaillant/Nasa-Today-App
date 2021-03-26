@@ -20,6 +20,8 @@ const Home = () => {
     setLastYPosition,
   } = nasaContext
 
+  console.log(resultsFound, notFound)
+
   useEffect(() => {
     setTimeout(() => {
       if (lastYPosition !== 0) {
@@ -54,7 +56,7 @@ const Home = () => {
       <Search />
       {loading ? (
         <Spinner />
-      ) : notFound ? (
+      ) : resultsFound === 0 ? (
         <NotFound />
       ) : (
         <ShowcaseItems data={data} resultsFound={resultsFound} />

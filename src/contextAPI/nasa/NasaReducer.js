@@ -41,8 +41,8 @@ export default (state, action) => {
     case NOT_FOUND:
       return {
         ...state,
-        notFound: action.payload.notFound,
-        lastSearch: action.payload.lastSearch,
+        resultsFound: 0,
+        notFound: true,
         loading: false,
       }
     case APP_STARTED:
